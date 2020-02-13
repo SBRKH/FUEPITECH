@@ -29,90 +29,122 @@ class SignUpState extends State<SignUp> {
   Widget build(BuildContext ctx) {
     return SafeArea(
       child: Container(
-        padding: const EdgeInsets.only(top: 8.0, left: 8.0),
+        padding: const EdgeInsets.all(10.0),
         color: Colors.grey[200],
         //alignment: Alignment.center,
         child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Container(
-                height: 150,
+              const Text('Sign up',
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                      fontFamily: "Roboto",
+                      fontWeight: FontWeight.bold,
+                      fontSize: 30,
+                      color: Color.fromRGBO(52, 73, 94, 1)
+                  )
               ),
-              Text('Sign Up',
-                textAlign: TextAlign.left,
-                style: Theme.of(context)
-                    .textTheme
-                    .display1
-                    .copyWith(color: Colors.black)),
               Container(
-                color: Colors.white,
-                padding: const EdgeInsets.all(8.0),
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(3.0),
-                  ),
+                  child: Card(
+                    elevation: 5,
+                    semanticContainer: true,
                   child: Form(
-                    key: formKey,
-                    child: Column(
-                      children: <Widget>[
-                        TextFormField(
-                          validator: isEmpty(),
-                          style: const TextStyle(
-                            height: 0.5,
+                      key: formKey,
+                      child: Wrap(
+                        runSpacing: 5,
+                        children: <Widget>[
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Container(
+                                  width: MediaQuery.of(context).size.width * 0.75,
+                                  child: TextFormField(
+                                    validator: isEmpty(),
+                                    style: const TextStyle(
+                                      height: 0.5,
+                                    ),
+                                    decoration: const InputDecoration(
+                                      border: UnderlineInputBorder(),
+                                      labelText: 'PRÉNOM',
+                                      labelStyle: TextStyle(
+                                        
+                                        fontWeight: FontWeight.bold,
+                                        color: Color.fromRGBO(53, 59, 72, 1)
+                                      )
+                                    ),
+                                  ),
+                                ),
+                              ]
                           ),
-                          decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                            labelText: 'Prénom',
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Container(
+                                  width: MediaQuery.of(context).size.width * 0.75,
+                                  child: TextFormField(
+                                    validator: isEmpty(),
+                                    style: const TextStyle(
+                                      height: 0.5,
+                                    ),
+                                    decoration: const InputDecoration(
+                                      border: UnderlineInputBorder(),
+                                      labelText: 'Nom',
+                                    ),
+                                  ),
+                                ),
+                              ]
                           ),
-                        ),
-                        TextFormField(
-                          validator: isEmpty(),
-                          style: const TextStyle(
-                            height: 0.5,
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Container(
+                                  width: MediaQuery.of(context).size.width * 0.75,
+                                  child: TextFormField(
+                                    validator: composeValidator([isEmpty(), isEmail()]),
+                                    style: const TextStyle(
+                                      height: 0.5,
+                                    ),
+                                    decoration: const InputDecoration(
+                                      border: UnderlineInputBorder(),
+                                      labelText: 'Email',
+                                    ),
+                                  ),
+                                ),
+                              ]
                           ),
-                          decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                            labelText: 'Nom',
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Container(
+                                  width: MediaQuery.of(context).size.width * 0.75,
+                                  child: TextFormField(
+                                    obscureText: true,
+                                    validator: isEmpty(),
+                                    style: const TextStyle(
+                                      height: 0.5,
+                                    ),
+                                    decoration: const InputDecoration(
+                                      border: UnderlineInputBorder(),
+                                      labelText: 'Mot de passe',
+                                    ),
+                                  ),
+                                ),
+                              ]
                           ),
-                        ),
-                        TextFormField(
-                          validator: composeValidator([isEmpty(), isEmail()]),
-                          style: const TextStyle(
-                            height: 0.5,
-                          ),
-                          decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                            labelText: 'Email',
-                          ),
-                        ),
-                        TextFormField(
-                          obscureText: true,
-                          validator: isEmpty(),
-                          style: const TextStyle(
-                            height: 0.5,
-                          ),
-                          decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                            labelText: 'Mot de passe',
-                          ),
-                        ),
-                      RaisedButton(
-                        onPressed: () {
-                          if (formKey.currentState.validate()) {
-                            // If the form is valid, display a snackbar. In the real world,
-                            // you'd often call a server or save the information in a database.
-                            Scaffold
-                                .of(context)
-                                .showSnackBar(const SnackBar(content: Text('Processing Data')));
-                          }
-                        },
-                        child: const Text('Submit'),
+                        ],
                       )
-                      ],
-                    )
                   )
                 )
+              ),
+              RaisedButton(
+                onPressed: () {
+                  if (formKey.currentState.validate()) {
+                    Scaffold
+                        .of(context)
+                        .showSnackBar(const SnackBar(content: Text('Processing Data')));
+                  }
+                },
+                child: const Text('Submit'),
               )
           ]
         )
