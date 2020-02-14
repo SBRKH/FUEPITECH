@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fuepitech/signup/signup.dart';
 import './login/loginView.dart';
 
 void main() => runApp(App());
@@ -21,7 +22,7 @@ class App extends StatelessWidget {
         primarySwatch: Colors.blue,
         fontFamily: 'Roboto'
       ),
-      home: LoginView(),
+      home: SignUp(),
     );
   }
 }

@@ -28,11 +28,11 @@ class _LoginViewState extends State<LoginView> {
   }
 
   Future<void> _loginButtonPressed() async {
-    final test = await API.post('https://api.sportsnconnect.com/auth/login',
+    /*final test = await API.post('https://api.sportsnconnect.com/auth/login',
         {'email': _email, 'password': _password});
 
       print(test['payload']);
-      print(test['payload']['access_token']);
+      print(test['payload']['access_token']);*/
   }
 
   @override
