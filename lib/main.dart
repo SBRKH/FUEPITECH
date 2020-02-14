@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fuepitech/signup/signup.dart';
 import './login/loginView.dart';
 import './signup.dart';
 

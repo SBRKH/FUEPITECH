@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart' show FormFieldValidator;
 
 FormFieldValidator<String> composeValidator(List<FormFieldValidator<String>> validators) {
-  return (value) {
-    for (final validator in validators) {
+  return (String value) {
+    for (final FormFieldValidator<String> validator in validators) {
       final String result = validator(value);
       if (result != null) {
         return result;
