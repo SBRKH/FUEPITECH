@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './login/loginView.dart';
+import './signup.dart';
 
 void main() => runApp(App());
 
@@ -21,7 +22,11 @@ class App extends StatelessWidget {
         primarySwatch: Colors.blue,
         fontFamily: 'Roboto'
       ),
-      home: LoginView(),
+      initialRoute: '/',
+      routes: {
+        '/': (BuildContext context) => LoginView(),
+        '/signUp': (BuildContext context) => SignUp()
+      }
     );
   }
 }

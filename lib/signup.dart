@@ -59,7 +59,7 @@ class SignUpState extends State<SignUp> {
               const Text('Inscription',
                   textAlign: TextAlign.left,
                   style: TextStyle(
-                      fontFamily: "Roboto",
+                      fontFamily: 'Roboto',
                       fontWeight: FontWeight.bold,
                       fontSize: 30,
                       color: Color.fromRGBO(52, 73, 94, 1)
