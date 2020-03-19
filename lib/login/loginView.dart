@@ -2,7 +2,6 @@ import 'package:fuepitech/validator/validator.dart';
 import 'package:flutter/material.dart';
 import '../API/API.dart';
 import '../API/Routes.dart';
-import '../signup.dart';
 
 class LoginView extends StatefulWidget {
   @override
@@ -26,14 +25,20 @@ class _LoginViewState extends State<LoginView> {
     });
   }
 
-  Future<void> _loginButtonPressed() async {
-    final Map<String, dynamic> body = Map<String, dynamic>();
+  Future<void> _loginButtonPressed(BuildContext context) async {
+    final Map<String, String> body = <String,String>{};
 
     body['email'] = _email;
     body['password'] = _password;
-    final dynamic test = await API.post(Routes.LOGIN, body);
-    print(test['payload']['user_id']);
-    print(test['payload']['access_token']);
+    try {
+      final dynamic test = await API.post(Routes.LOGIN, body);
+      print(test['payload']['user_id']);
+      print(test['payload']['access_token']);
+
+      Navigator.pushNamed(context, '/flux');
+    } catch (e) {
+      print(e);
+    }
   }
 
   @override
@@ -97,7 +102,7 @@ class _LoginViewState extends State<LoginView> {
                               child: FlatButton(
                                 child: const Text('Se connecter'),
                                 onPressed: () {
-                                  _loginButtonPressed();
+                                  _loginButtonPressed(context);
                                 },
                               ))
                         ],
