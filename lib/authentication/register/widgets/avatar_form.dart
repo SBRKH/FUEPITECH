@@ -6,7 +6,6 @@ import 'package:fuepitech/authentication/bloc/authentication_bloc.dart';
 import 'package:fuepitech/authentication/register/bloc/register_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 
-
 class AvatarForm extends StatefulWidget {
   const AvatarForm({Key key, @required String token}) : 
     assert(token != null),
@@ -48,7 +47,7 @@ class _AvatarFormState extends State<AvatarForm> {
       return retrieveError;
     }
     if (_imageFile != null) {
-      return Image.file(_imageFile, height: 400, width: 400,);
+      return Image.file(_imageFile, height: MediaQuery.of(context).size.height / 3, width: MediaQuery.of(context).size.width / 3,);
     } else if (_pickImageError != null) {
       return Text(
         'Pick image error: $_pickImageError',
