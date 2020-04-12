@@ -1,13 +1,10 @@
+class SportsApi {
+  static const String url = 'https://api.sportsnconnect.com/';
+  static const String login = '${url}auth/login';
+  static const String signup = '${url}auth/register';
+  static const String user = '${url}users/me';
 
-import 'dart:convert';
-import 'package:dio/dio.dart';
-
-class API {
-  static Future<dynamic> post(String url, Map<String, dynamic> body) async {
-    Response<String> response;
-    final Dio dio = Dio();
-
-    response = await dio.post(url, data: body);
-    return json.decode(response.toString());
+  static String getEvents(int page) {
+    return '${url}activity/events?page=$page';
   }
 }
